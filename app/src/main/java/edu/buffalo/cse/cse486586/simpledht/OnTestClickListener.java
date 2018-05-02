@@ -63,6 +63,11 @@ public class OnTestClickListener implements OnClickListener {
 				return null;
 			}
 
+			try {
+				Thread.sleep(3000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 			if (testQuery()) {
 				publishProgress("Query success\n");
 			} else {
@@ -91,8 +96,10 @@ public class OnTestClickListener implements OnClickListener {
 			return true;
 		}
 
+
 		private boolean testQuery() {
 			try {
+
 				for (int i = 0; i < TEST_CNT; i++) {
 					String key = (String) mContentValues[i].get(KEY_FIELD);
 					String val = (String) mContentValues[i].get(VALUE_FIELD);
@@ -129,7 +136,17 @@ public class OnTestClickListener implements OnClickListener {
 					}
 
 					resultCursor.close();
+
 				}
+/*
+				String key = "*";
+				Cursor resultCursor = mContentResolver.query(mUri, null,
+							key, null, null);
+					if (resultCursor == null) {
+						Log.e(TAG, "Result null");
+						throw new Exception();
+					}
+*/
 			} catch (Exception e) {
 				return false;
 			}

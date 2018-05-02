@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.text.method.ScrollingMovementMethod;
 import android.view.Menu;
+import android.view.View;
 import android.widget.TextView;
 
 public class SimpleDhtActivity extends Activity {
